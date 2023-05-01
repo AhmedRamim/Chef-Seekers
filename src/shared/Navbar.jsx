@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     return (
         <div className='text-white flex justify-between pt-12'>
-            <h1 className='text-4xl font-bold'>Hotel <span className='text-orange-600'>Rolex</span></h1>
+            <h1 className='text-4xl font-bold'>Hotel <span className='text-orange-500'>Rolex</span></h1>
             <nav >
                 <ul className='flex  space-x-11 text-lg font-semibold'>
                     <li>
