@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../shared/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Register = () => {
     const {createUser} = useContext(AuthContext)
+    const [error,setError] = useState('')
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -14,16 +15,26 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoUrl = form.photoUrl.value;
+        setError('')
+        if(!/ (?=.*\d)/){
+            toast('Password must be contain one Number')
+            return
+        }
+        else if(password.length<6){
+            setError('Password must be 6 character or Above')
+            return;
+        }
         createUser(email,password)
         .then(result => {
             const createUser = result.user;
            
-            
+            form.reset()
             navigate('/login')
+            
             
         })
         .catch(error => {
-            toast(error.message)
+            setError(error.message)
         })
         console.log(name,email,password,photoUrl);
         
@@ -71,6 +82,7 @@ const Register = () => {
                                 <button className="btn btn-primary">Register</button>
                             </div>
                             <p>Already have an account? <Link className='btn btn-link' to='/login'>Login</Link></p>
+                            <p className='text-error'>{error}</p>
                         </form>
                     </div>
                 </div>
