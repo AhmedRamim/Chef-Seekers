@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Blog from '../pages/Blog';
 import ChefsDetails from '../pages/ChefsDetails';
+import Register from '../pages/Register';
 const Router = createBrowserRouter([
   {
     path:'/',
@@ -20,6 +21,10 @@ const Router = createBrowserRouter([
       {
           path:'/login',
           element:<Login></Login>
+      },
+      {
+          path:'/register',
+          element:<Register></Register>
       },
       {
         path:'/blog',

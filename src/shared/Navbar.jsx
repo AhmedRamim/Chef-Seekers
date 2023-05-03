@@ -30,17 +30,19 @@ const Navbar = ({color}) => {
                     
                     <li>
                         <NavLink
-                            to="/login"
+                            to="/register"
                             className={({ isActive}) =>
                                  isActive ? "text-blue-500" : ""
                             }
                         >
-                            Login
+                            Register
                         </NavLink>
                     </li>
                 </ul>
             </nav>
-                <h1>Profile</h1>
+                <div>
+                    
+                </div>
         </div>
     );
 };

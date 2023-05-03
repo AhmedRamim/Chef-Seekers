@@ -17,7 +17,7 @@ const Chefs = () => {
             <div className='grid grid-cols-1 md:grid-cols-3  gap-12'>
                 {
                     chefs && chefs.map(chef => {
-                        return <div key={chef.id} className="card w-96 bg-[#050c39] shadow-2xl  text-white">
+                        return <div key={chef.id} className="card w-96 bg-[#050c39] shadow-2xl  text-white my-12">
                             <figure><img src={chef.picture} alt="chefs" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">{chef.chef_name}</h2>
