@@ -13,11 +13,11 @@ const Chefs = () => {
     console.log(chefs);
     return (
         <div className=' pb-12 text-white'>
-            <h1 className='text-center text-5xl font-bold my-12'>Our Chefs </h1>
-            <div className='grid grid-cols-1 md:grid-cols-3  gap-12'>
+            <h1 className='text-center text-5xl font-bold my-12 pb-12'>Our Chefs </h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 px-4 md:px-0 my-12 gap-12'>
                 {
                     chefs && chefs.map(chef => {
-                        return <div key={chef.id} className="card w-96 bg-[#050c39] shadow-2xl  text-white my-12">
+                        return <div key={chef.id} className="card w-full bg-[#050c39] shadow-2xl  text-white  ">
                             <figure><img src={chef.picture} alt="chefs" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">{chef.chef_name}</h2>
