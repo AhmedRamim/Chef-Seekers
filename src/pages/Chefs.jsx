@@ -10,7 +10,6 @@ const Chefs = () => {
             .then(res => res.json())
             .then(data => setChefs(data))
     }, [])
-    console.log(chefs);
     return (
         <div className=' pb-12 text-white'>
             <h1 className='text-center text-5xl font-bold my-12 pb-12'>Our Chefs </h1>

@@ -3,10 +3,11 @@ import Navbar from '../shared/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
-    const [error,setError] = useState('')
+    const { createUser,updateProfile,googleUser,githubUser } = useContext(AuthContext)
+    const [error, setError] = useState('')
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,38 +17,57 @@ const Register = () => {
         const password = form.password.value;
         const photoUrl = form.photoUrl.value;
         setError('')
-        if(!/ (?=.*\d)/){
-            toast('Password must be contain one Number')
-            return
-        }
-        else if(password.length<6){
+       
+        if (password.length < 6) {
             setError('Password must be 6 character or Above')
             return;
         }
-        createUser(email,password)
+
+        createUser(email, password)
+            .then(result => {
+                const createUser = result.user;
+                console.log(createUser);
+                form.reset()
+                navigate('/login')
+
+
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+
+        console.log(name, email, password, photoUrl);
+
+    }
+    const handleGoogle = () => {
+        googleUser()
         .then(result => {
-            const createUser = result.user;
-           
-            form.reset()
-            navigate('/login')
-            
-            
+            // console.log(result.user);
+            navigate('/')
         })
         .catch(error => {
-            setError(error.message)
+            console.log(error);
         })
-        console.log(name,email,password,photoUrl);
-        
+    }
+    const handleGithub = () => {
+        githubUser()
+        .then(result => {
+            // console.log(result.user);
+            navigate('/')
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     // const 
     return (
-        
+
         <div className='w-[80%] mx-auto'>
             <Navbar color={'black'}></Navbar>
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col mt-6">
-                    <div className="text-center">
+                    <div className="">
                         <h1 className="text-5xl font-bold my-6">Register now!</h1>
                     </div>
                     <ToastContainer></ToastContainer>
@@ -76,13 +96,15 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input name='password' required type="password" placeholder="password" className="input input-bordered" />
-                                
+
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
-                            <p>Already have an account? <Link className='btn btn-link' to='/login'>Login</Link></p>
                             <p className='text-error'>{error}</p>
+                            <button onClick={handleGoogle} className='btn btn-outline'> <FaGoogle></FaGoogle>  <span className='ml-4'>Google</span></button>
+                            <button onClick={handleGithub} className='btn btn-outline'> <FaGithub></FaGithub> <span className='ml-4'>Github</span></button>
+                            <p>Already have an account? <Link className='btn btn-link' to='/login'>Login</Link></p>
                         </form>
                     </div>
                 </div>

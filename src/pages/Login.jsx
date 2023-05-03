@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../shared/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
+    const [error,setError ] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
     const {signIn} = useContext(AuthContext)
+    const pathname = location.state?.from?.pathname || '/'
     const handleSubmit = (e) => {
+        setError('')
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -15,12 +20,14 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             toast('Login Successfully')
+            navigate(pathname)
             console.log(loggedUser);
         })
         .catch(error => {
-            toast(error.message);
+            setError(error.message);
+            
         })
-        console.log(email,password);
+    
     }
     return (
         <div className='md:w-[80%] mx-auto'>
@@ -52,6 +59,7 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                             <p>Are you new here?<Link className='btn btn-link' to='/register'>Register</Link></p>
+                            <p className='text-error'>{error}</p>
                         </form>
                     </div>
                 </div>
