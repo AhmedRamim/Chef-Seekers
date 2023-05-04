@@ -28,7 +28,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const createUser = result.user;
-                console.log(createUser);
+                
                 updateUserProfiles(name,photoUrl)
                 form.reset()
                 navigate('/login')
