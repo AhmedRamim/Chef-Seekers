@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -28,11 +28,23 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const updateProfile = (displayName, photoURL) => {
-        return updateProfile(auth.user, {
-            displayName: displayName, photoURL: photoURL
+    const updateUserProfiles = (name, photo) => {
+        console.log(name,photo);
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
         })
-    }
+        .then(() => {
+          setLoading(false);
+          console.log("User profile updated successfully");
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.error("Error updating user profile:", error);
+        });
+      }
+      
     const googleUser = () => {
         setLoading(true)
         return signInWithPopup(auth,googleProvider)
@@ -60,7 +72,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         logOut,
         loading,
-        updateProfile,
+        updateUserProfiles,
         googleUser,
         githubUser
     }

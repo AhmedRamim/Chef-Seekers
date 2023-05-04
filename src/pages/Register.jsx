@@ -4,9 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { useEffect } from 'react';
 
 const Register = () => {
-    const { createUser,updateProfile,googleUser,githubUser } = useContext(AuthContext)
+    const { createUser, updateUserProfiles, googleUser, githubUser } = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const handleSubmit = (e) => {
@@ -16,8 +17,9 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoUrl = form.photoUrl.value;
+        
         setError('')
-       
+
         if (password.length < 6) {
             setError('Password must be 6 character or Above')
             return;
@@ -27,6 +29,7 @@ const Register = () => {
             .then(result => {
                 const createUser = result.user;
                 console.log(createUser);
+                updateUserProfiles(name,photoUrl)
                 form.reset()
                 navigate('/login')
 
@@ -36,29 +39,29 @@ const Register = () => {
                 setError(error.message)
             })
 
-        console.log(name, email, password, photoUrl);
+        // console.log(name, email, password, photoUrl);
 
     }
     const handleGoogle = () => {
         googleUser()
-        .then(result => {
-            // console.log(result.user);
-            navigate('/')
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                // console.log(result.user);
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     const handleGithub = () => {
         githubUser()
-        .then(result => {
-            // console.log(result.user);
-            navigate('/')
-            
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                // console.log(result.user);
+                navigate('/')
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     // const 
@@ -103,10 +106,11 @@ const Register = () => {
                                 <button className="btn btn-primary">Register</button>
                             </div>
                             <p className='text-error'>{error}</p>
-                            <button onClick={handleGoogle} className='btn btn-outline'> <FaGoogle></FaGoogle>  <span className='ml-4'>Google</span></button>
-                            <button onClick={handleGithub} className='btn btn-outline'> <FaGithub></FaGithub> <span className='ml-4'>Github</span></button>
+
                             <p>Already have an account? <Link className='btn btn-link' to='/login'>Login</Link></p>
                         </form>
+                        <button onClick={handleGoogle} className='btn btn-outline my-2'> <FaGoogle></FaGoogle>  <span className='ml-4'>Google</span></button>
+                        <button onClick={handleGithub} className='btn btn-outline'> <FaGithub></FaGithub> <span className='ml-4'>Github</span></button>
                     </div>
                 </div>
             </div>

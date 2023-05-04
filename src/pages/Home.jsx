@@ -3,6 +3,8 @@ import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
 import Banner from './Banner';
 import Chefs from './Chefs';
+import Newsletter from './Newsletter';
+import Review from './Review/Review';
 
 const Home = () => {
     return (
@@ -12,6 +14,9 @@ const Home = () => {
             <Navbar></Navbar>
             <Banner></Banner>
             <Chefs></Chefs>
+            <Review></Review>
+            <Newsletter></Newsletter>
+            {/* <Review></Review> */}
             </div>
             <Footer></Footer>
             {/* <Footer></Footer> */}

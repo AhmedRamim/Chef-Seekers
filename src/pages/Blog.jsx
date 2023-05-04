@@ -8,7 +8,7 @@ const Blog = () => {
     const handleDownload = () => {
         const doc = new jsPDF();
         const blogContent = document.getElementById('blog-content').innerText;
-        doc.text(blogContent, 10, 10);
+        doc.text(blogContent, 20, 20);
         doc.save("blog.pdf");
         toast('Downloaded PDF')
         
