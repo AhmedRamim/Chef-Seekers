@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { FaRegStar, FaStar} from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import LazyLoad from 'react-lazy-load';
 
 const Chefs = () => {
     const [chefs, setChefs] = useState([])
@@ -17,7 +18,11 @@ const Chefs = () => {
                 {
                     chefs && chefs.map(chef => {
                         return <div key={chef.id} className="card w-full bg-[#050c39] shadow-2xl  text-white  ">
-                            <figure><img src={chef.picture} alt="chefs" /></figure>
+                            <figure>
+                                <LazyLoad height={200} once>
+                                    <img src={chef.picture} alt="chefs"  />
+                                </LazyLoad>
+                            </figure>
                             <div className="card-body">
                                 <h2 className="card-title">{chef.chef_name}</h2>
                                 <p>Years of Experience: {chef.years_of_experience}</p>
