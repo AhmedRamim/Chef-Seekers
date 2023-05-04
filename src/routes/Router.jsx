@@ -10,10 +10,12 @@ import Blog from '../pages/Blog';
 import ChefsDetails from '../pages/ChefsDetails';
 import Register from '../pages/Register';
 import PrivateRoute from './PrivateRoute';
+import ErrorPage from '../pages/Error';
 const Router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout></HomeLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

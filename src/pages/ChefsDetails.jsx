@@ -17,7 +17,7 @@ const ChefsDetails = () => {
     }, [])
     const handleFavorite = () => {
         toast("Added on Favorite")
-        setDisable(true )
+        setDisable(true)
     }
     return (
         <div className=' bg-[#01051e] '>
