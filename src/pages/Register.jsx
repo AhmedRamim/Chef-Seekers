@@ -10,6 +10,7 @@ const Register = () => {
     const { createUser, updateUserProfiles, googleUser, githubUser } = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const pathname = location.state?.from?.pathname || '/'
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -31,7 +32,7 @@ const Register = () => {
                 
                 updateUserProfiles(name,photoUrl)
                 form.reset()
-                navigate('/login')
+                navigate(pathname)
 
 
             })
@@ -46,17 +47,17 @@ const Register = () => {
         googleUser()
             .then(result => {
                 // console.log(result.user);
-                navigate('/')
+                navigate(pathname)
             })
             .catch(error => {
                 console.log(error);
             })
     }
-    const handleGithub = () => {
+    const handleGithub = () => { 
         githubUser()
             .then(result => {
                 // console.log(result.user);
-                navigate('/')
+                navigate(pathname)
 
             })
             .catch(error => {

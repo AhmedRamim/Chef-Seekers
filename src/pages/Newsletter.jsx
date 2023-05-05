@@ -9,21 +9,21 @@ const Subscribe = () => {
                 <div className='col-span-6'>
 
                     <div className='card-body border rounded-xl mt-3 shadow-lg'>
-                        <div className="form-control ">
+                        <div className="form-control text-white">
                             <label className="label ">
-                                <span className="label-text">Name</span>
+                                <span className="label-text text-white">Name</span>
                             </label>
                             <input type="text" placeholder="Name" className="shadow-lg input input-bordered" />
                         </div>
                         <div className="form-control ">
                             <label className="label ">
-                                <span className="label-text">Email</span>
+                                <span className="label-text text-white">Email</span>
                             </label>
                             <input type="email" placeholder="Email" className="shadow-lg input input-bordered" />
                         </div>
                         <div className="form-control ">
                             <label className="label ">
-                                <span className="label-text">Comment</span>
+                                <span className="label-text text-white">Comment</span>
                             </label>
                             <textarea className="shadow-lg border rounded-xl p-2" name="" id="" cols="30" rows="10" placeholder='Write a comment'></textarea>
                             <button className='btn btn-primary text-white mt-6'>Submit</button>

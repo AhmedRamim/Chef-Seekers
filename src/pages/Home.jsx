@@ -4,7 +4,8 @@ import Footer from '../shared/Footer';
 import Banner from './Banner';
 import Chefs from './Chefs';
 import Newsletter from './Newsletter';
-import Review from './Review/Review';
+import ChefPlans from './ChefPlans';
+
 
 const Home = () => {
     return (
@@ -14,7 +15,7 @@ const Home = () => {
             <Navbar></Navbar>
             <Banner></Banner>
             <Chefs></Chefs>
-            <Review></Review>
+            <ChefPlans></ChefPlans>
             <Newsletter></Newsletter>
             {/* <Review></Review> */}
             </div>

@@ -7,7 +7,7 @@ const ChefPlans = () => {
       <div className="flex justify-center items-center  text-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0 mt-12 md:mt-2">
           {/* Free Plan Card */}
-          <div className="bg-[#050e41]  p-6 shadow-lg rounded-2xl text-center md:text-left ">
+          <div className="bg-[#050e41]  p-6 shadow-lg rounded-2xl  text-left ">
             <h2 className="text-2xl text-yellow-400 font-bold mb-4">Free Plan</h2>
             <p className="text-white mb-4">Basic and simple Access to Our Chef Network! thats why its basic</p>
             <ul className="text-white mb-4">
@@ -15,7 +15,7 @@ const ChefPlans = () => {
               <li>Weekly newsletter</li>
               <li>Limited support</li>
             </ul>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Sign Up</button>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Upgrade</button>
           </div>
 
           {/* Monthly Plan Card */}
@@ -27,7 +27,7 @@ const ChefPlans = () => {
               <li>Monthly newsletter</li>
               <li>Priority support</li>
             </ul>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Sign Up</button>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Upgrade</button>
           </div>
 
           {/* Premium Plan Card */}
@@ -39,7 +39,7 @@ const ChefPlans = () => {
               <li>Weekly newsletter</li>
               <li>24/7 support</li>
             </ul>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Sign Up</button>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Upgrade</button>
           </div>
         </div>
       </div>
