@@ -3,12 +3,13 @@ import Navbar from '../shared/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const [error,setError ] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
-    const {signIn} = useContext(AuthContext)
+    const {signIn,googleUser,githubUser} = useContext(AuthContext)
     const pathname = location.state?.from?.pathname || '/'
     const handleSubmit = (e) => {
         setError('')
@@ -28,6 +29,27 @@ const Login = () => {
             
         })
     
+    }
+    const handleGoogle = () => {
+        googleUser()
+            .then(result => {
+                // console.log(result.user);
+                navigate(pathname)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    const handleGithub = () => { 
+        githubUser()
+            .then(result => {
+                // console.log(result.user);
+                navigate(pathname)
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className='md:w-[80%] mx-auto'>
@@ -61,6 +83,8 @@ const Login = () => {
                             <p>Are you new here?<Link className='btn btn-link' to='/register'>Register</Link></p>
                             <p className='text-error'>{error}</p>
                         </form>
+                        <button onClick={handleGoogle} className='btn btn-outline my-2'> <FaGoogle></FaGoogle>  <span className='ml-4'>Google</span></button>
+                        <button onClick={handleGithub} className='btn btn-outline'> <FaGithub></FaGithub> <span className='ml-4'>Github</span></button>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ const Subscribe = () => {
                             <label className="label ">
                                 <span className="label-text text-white">Comment</span>
                             </label>
-                            {/* /jddjkdjj */}
+                            
                             <textarea className="shadow-lg border rounded-xl p-2" name="" id="" cols="30" rows="10" placeholder='Write a comment'></textarea>
                             <button className='btn btn-primary text-white mt-6'>Submit</button>
                         </div>
