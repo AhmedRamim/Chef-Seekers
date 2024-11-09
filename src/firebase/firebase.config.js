@@ -5,12 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_APIKEY,
-  authDomain: import.meta.env.VITE_AUTHDOMAIN,
-  projectId:import.meta.env.VITE_PROJECTID,
-  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
-  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
-  appId:import.meta.env.VITE_APPID
+  apiKey: "AIzaSyD_VcP9sei0oLRkW066LPs3TmmWA2ql89g",
+  authDomain: "chefs-seekers-ee5c4.firebaseapp.com",
+  projectId: "chefs-seekers-ee5c4",
+  storageBucket: "chefs-seekers-ee5c4.firebasestorage.app",
+  messagingSenderId: "812748618985",
+  appId: "1:812748618985:web:33d23572f2801c241c4478",
+  measurementId: "G-JW8HQZLZC3"
 };
 
 // Initialize Firebase
